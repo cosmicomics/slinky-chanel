@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# Test Chanel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Voici la reproduction, en react, du menu présenté ici https://slinky.js.org/
 
-## Available Scripts
+Une démo est disponible [ici](https://slinky-chanel.web.app/).
 
-In the project directory, you can run:
 
-### `npm start`
+Quelques détails :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Il semble que l'accessibilité n'ait pas été prise en compte par l'auteur de Slinky (navigation clavier désactivée) ; j'ai donc reproduit à l'identique ce comportement.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Lors d'un resize de la fenêtre ou, plus généralement, du composant, si la hauteur d'une entrée du menu Slinky change à cause du reflow de son texte, la hauteur du menu ne s'adapte pas. Il faut naviguer pour que le redimensionnement soit pris en compte. J'ai également reproduit ce comportement, même s'il n'a peut-être pas été implémenté à dessein par l'auteur de Slinky.
 
-### `npm test`
+- Le composant react du menu opère un rendu récursif des éléments qui lui sont donnés. Cette manière de faire est compacte et lisible ; néanmoins, dans le cas où le menu comporterait un nombre d'entrées particulièrement important (le cas du répertoire de musiques d'un ipod en est un exemple), un aplatissement des données fournies en entrée et la mise en place de sous-menus et de listes virtuelles allègeraient le DOM et pourraient se révéler bénéfiques en terme de performances (dans le cas d'un menu simple tel que celui présenté en démo, la rapport complexité / bénéfices ne justifie sans doute pas cela).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Voici un exemple illustrant la structure de l'objet fournie en entrée au composant react :
+```js
+[
+  {
+    title: "titre d'une entrée",
+    entries: [ "une sous-entrée sans enfants", "une autre sous-entrée sans enfants"]
+  },
+  {
+    title: "titre d'une seconde entrée",
+    entries: [
+      {
+        title: "une sous-entrée avec enfants",
+        entries: [ "une troisième sous-entrée sans enfants" ]
+      },
+      "une quatrième sous-entrée sans enfants"
+    ]
+  },
+]
+```
+La démo reprend les données de Slinky, afin de mieux pouvoir comparer l'original et sa reproduction.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Merci pour votre considération, bonne journée 🌿
