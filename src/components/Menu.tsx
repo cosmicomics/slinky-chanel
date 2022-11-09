@@ -15,22 +15,15 @@ export const MenuBody = (props: {
 }) => {
     const { isNext } = props;
     const containerRef = useRef<HTMLDivElement>(null);
-
     const [selectedEntryIndex, setSelectedEntryIndex] = useState(-1);
-    const [containerHeight, setContainerHeight] = useState(0);
 
     useEffect(() => {
-        const height = containerRef.current?.getBoundingClientRect().height ?? 0;
-        setContainerHeight(height);
-    }, [setContainerHeight]);
-
-    useEffect(() => {
-        selectedEntryIndex < 0 && !isNext && props.onSizeChange(containerHeight);
-    }, [selectedEntryIndex, containerHeight, isNext]);
+        selectedEntryIndex < 0 && !isNext && props.onSizeChange(containerRef.current?.getBoundingClientRect().height ?? 0);
+    }, [selectedEntryIndex, isNext]);
 
     const onResume = () => {
         setSelectedEntryIndex(-1);
-        props.onSizeChange(containerHeight);
+        props.onSizeChange(containerRef.current?.getBoundingClientRect().height ?? 0);
     };
 
     const onClickEntry = (entry: MenuContent | string, i: number) =>
@@ -42,7 +35,6 @@ export const MenuBody = (props: {
                 {!props.isRoot && (
                     <LineTitle>
                         <ArrowBack onClick={props.onClickBefore}></ArrowBack>
-                        {/*<Text>{props.content.title}</Text>*/}
                     </LineTitle>
                 )}
                 {props.content.entries?.map((entry, i) => (
