@@ -15,7 +15,7 @@ Quelques détails :
 
 - Voici un exemple illustrant la structure de l'objet fournie en entrée au composant react :
 ```js
-[
+
   {
     title: "titre d'une entrée",
     entries: [ "une sous-entrée sans enfants", "une autre sous-entrée sans enfants"]
@@ -30,7 +30,7 @@ Quelques détails :
       "une quatrième sous-entrée sans enfants"
     ]
   },
-]
+
 ```
 La démo reprend les données de Slinky, afin de mieux pouvoir comparer l'original et sa reproduction.
 
