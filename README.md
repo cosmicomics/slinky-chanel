@@ -16,7 +16,7 @@ Quelques détails :
 - Voici un exemple illustrant la structure de l'objet fournie en entrée au composant react :
 ```js
 {
-   title: "titre de du menu (entrée racine)",
+   title: "titre du menu (entrée racine)",
    entries: [
     {
       title: "titre d'une entrée",
