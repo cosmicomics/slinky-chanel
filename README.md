@@ -29,7 +29,7 @@ Quelques détails :
       },
       "une quatrième sous-entrée sans enfants"
     ]
-  },
+  }
 
 ```
 La démo reprend les données de Slinky, afin de mieux pouvoir comparer l'original et sa reproduction.
