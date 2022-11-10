@@ -15,21 +15,25 @@ Quelques détails :
 
 - Voici un exemple illustrant la structure de l'objet fournie en entrée au composant react :
 ```js
-
-  {
-    title: "titre d'une entrée",
-    entries: [ "une sous-entrée sans enfants", "une autre sous-entrée sans enfants"]
-  },
-  {
-    title: "titre d'une seconde entrée",
-    entries: [
-      {
-        title: "une sous-entrée avec enfants",
-        entries: [ "une troisième sous-entrée sans enfants" ]
-      },
-      "une quatrième sous-entrée sans enfants"
-    ]
-  }
+{
+   title: "titre de l'entrée affichée au chargement",
+   entries: [
+    {
+      title: "titre d'une entrée",
+      entries: [ "une sous-entrée sans enfants", "une autre sous-entrée sans enfants"]
+    },
+    {
+      title: "titre d'une seconde entrée",
+      entries: [
+        {
+          title: "une sous-entrée avec enfants",
+          entries: [ "une troisième sous-entrée sans enfants" ]
+        },
+        "une quatrième sous-entrée sans enfants"
+      ]
+    }
+   ]
+}
 
 ```
 La démo reprend les données de Slinky, afin de mieux pouvoir comparer l'original et sa reproduction.
